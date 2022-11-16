@@ -1,8 +1,8 @@
 from management import product_handler
 
-def main():
-    product_handler.get_product_by_id(3)
-
+# def main():
 if __name__ == "__main__":
-    # Seus prints de teste aqui
-    main()
+    print(product_handler.get_product_by_id(28))
+    print(product_handler.get_products_by_type('drink'))
+    print(product_handler.menu_report())
+    # main()
