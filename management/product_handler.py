@@ -25,7 +25,7 @@ def get_products_by_type(type):
 def menu_report():
 
     menu_count_type = 0
-    menu_name_type = 0
+    menu_name_type = ""
     menu_count = len(products)
     menu_sum = 0
     menu_type = {}
@@ -38,8 +38,8 @@ def menu_report():
         else:
             menu_type[item['type']] += 1
 
-    for index, item in enumerate(menu_type.items()):
-        if item[1] > menu_count_type:
-            menu_name_type = item[0]
-            menu_count_type = item[1]
+    for key, value in menu_type.items():
+        if value > menu_count_type:
+            menu_name_type = key
+            menu_count_type = value
     return f'Products Count: {menu_count} - Average Price: {menu_average} - Most Common Type: {menu_name_type}'
