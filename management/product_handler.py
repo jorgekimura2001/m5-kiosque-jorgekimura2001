@@ -1,7 +1,7 @@
 from menu import products
 
 
-def get_product_by_id(id):
+def get_product_by_id(id: int) -> dict:
 
     product_found = {}
     for item in products:
@@ -11,7 +11,7 @@ def get_product_by_id(id):
     return product_found
 
 
-def get_products_by_type(type):
+def get_products_by_type(type: str) -> list:
 
     products_found = []
 
@@ -22,7 +22,7 @@ def get_products_by_type(type):
     return products_found
 
 
-def menu_report():
+def menu_report() -> str:
 
     menu_count_type = 0
     menu_name_type = ""
@@ -42,4 +42,11 @@ def menu_report():
         if value > menu_count_type:
             menu_name_type = key
             menu_count_type = value
-    return f'Products Count: {menu_count} - Average Price: {menu_average} - Most Common Type: {menu_name_type}'
+    return f'Products Count: {menu_count} - Average Price: ${menu_average} - Most Common Type: {menu_name_type}'
+
+
+def add_product(menu: list, **new_product) -> dict:
+    new_id = len(menu) + 1
+    new_product['_id'] = new_id
+    menu.append(new_product)
+    return new_product
