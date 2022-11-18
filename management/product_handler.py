@@ -12,15 +12,18 @@ def get_product_by_id(id: int) -> dict:
     
     raise TypeError('product id must be an int')
 
-def get_products_by_type(type: str) -> list:
 
-    products_found = []
+def get_products_by_type(product_type: str) -> list:
+    if type(product_type) == str:
+        products_found = []
 
-    for item in products:
-        if item['type'] == type:
-            products_found.append(item)
+        for item in products:
+            if item['type'] == product_type:
+                products_found.append(item)
 
-    return products_found
+        return products_found
+
+    raise TypeError('product type must be a str')
 
 
 def menu_report() -> str:
