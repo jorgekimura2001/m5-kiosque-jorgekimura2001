@@ -49,8 +49,27 @@ def menu_report() -> str:
     return f'Products Count: {menu_count} - Average Price: ${menu_average} - Most Common Type: {menu_name_type}'
 
 
-def add_product(menu: list, **new_product) -> dict:
+def add_product(menu: list, **new_product: dict) -> dict:
     new_id = len(menu) + 1
     new_product['_id'] = new_id
     menu.append(new_product)
     return new_product
+
+
+def add_product_extra(menu: list, *args: tuple, **new_product: dict) -> dict:
+
+    product_correct = new_product.copy()
+
+    for key in new_product.keys():
+        if key not in args:
+            product_correct.pop(key)
+
+    for required in args:
+        if required not in product_correct:
+            raise KeyError(f'field {required} is required')
+
+    print(product_correct)
+    new_id = len(menu) + 1
+    product_correct['_id'] = new_id
+    menu.append(product_correct)
+    return product_correct
